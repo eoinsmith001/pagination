@@ -8,5 +8,14 @@ apiRouter.route('/user')
       if (err) throw err;
       res.status(201).json(user);
     });
+  })
+  .get(function(req,res) {
+    User.find({
+    })
+    .sort({age: 'desc'})
+    .exec(function(err,users){
+      if (err) throw err;
+      res.status(200).json(users);
+    });
   });
 module.exports = apiRouter;
