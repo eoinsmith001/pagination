@@ -12,9 +12,11 @@ apiRouter.route('/user')
     });
   })
   .get(function(req,res) {
+    console.log(req.query);
     User.find({
     })
-    .sort({age: 'desc'})
+    .sort({age: req.query.order})
+    .limit(req.query.paginate)
     .exec(function(err,users){
       if (err) throw err;
       res.status(200).json(users);
