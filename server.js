@@ -1,4 +1,5 @@
 var express = require('express');
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var app = express();
 
@@ -6,6 +7,7 @@ var apiRouter = require('./routes/router');
 var port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(morgan('combined'));
 var mongoose = require('mongoose');
 var dbURI = 'mongodb://localhost:27017/pagination';
 
